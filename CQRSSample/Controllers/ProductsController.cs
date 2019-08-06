@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using CQRSSample.Commands;
 using CQRSSample.Queries;
 using MediatR;
@@ -29,9 +28,7 @@ namespace CQRSSample.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(CreateProductCommand command)
         {
-            command.Id = Guid.NewGuid();
-
-            var result = await mediatr.Send(command);
+            await mediatr.Send(command);
 
             return NoContent();
         }

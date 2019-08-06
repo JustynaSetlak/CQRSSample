@@ -1,6 +1,5 @@
 ﻿using CQRSSample.Common.Query;
 using CQRSSample.Dtos;
-using MediatR;
 using System.Collections.Generic;
 
 namespace CQRSSample.Queries

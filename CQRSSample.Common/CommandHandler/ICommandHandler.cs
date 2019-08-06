@@ -1,10 +1,11 @@
 ﻿using CQRSSample.Common.Command;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CQRSSample.Common.Handler
 {
     public interface ICommandHandler<T> where T : ICommand
     {
-        Task HandleAsync(T command);
+        Task HandleAsync(T command, CancellationToken cancellationToken);
     }
 }

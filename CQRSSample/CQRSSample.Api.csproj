@@ -6,15 +6,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.1.1" />
     <PackageReference Include="MediatR" Version="7.0.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Azure.ServiceBus" Version="3.4.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CQRSSample.Common\CQRSSample.Common.csproj" />
+    <ProjectReference Include="..\CQRSSample.Domain.Customer\CQRSSample.Domain.Customer.csproj" />
     <ProjectReference Include="..\CQRSSample.Domain.Product\CQRSSample.Domain.Product.csproj" />
   </ItemGroup>
 
