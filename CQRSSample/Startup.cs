@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
 using AutoMapper;
 using CQRSSample.Api.Config;
+using CQRSSample.Api.Configuration;
 using CQRSSample.CommandHandlers;
-using CQRSSample.Common.Configuration;
 using CQRSSample.Domain.Customer.EventHandlers;
 using CQRSSample.Domain.Product.MappingProfiles;
 using MediatR;
@@ -27,13 +27,13 @@ namespace CQRSSample.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddLogging();
-            services.Configure<StoreDatabaseConfiguration>(Configuration.GetSection(nameof(StoreDatabaseConfiguration)));
-            services.AddOptions();
+
+            OptionsConfigurationService.Configure(services, Configuration);
             DependencyConfigurationService.RegisterDependencies(services, Configuration);
 
             //tochange
-            //services.AddAutoMapper(new[] { Assembly.GetExecutingAssembly(), typeof(ProductProfile).Assembly  });
-            //services.AddMediatR(new[] { Assembly.GetExecutingAssembly(), typeof(CreateProductCommandHandler).Assembly, typeof(NewProductAddedEventHandler).Assembly});
+            services.AddAutoMapper(new[] { Assembly.GetExecutingAssembly(), typeof(ProductProfile).Assembly  });
+            services.AddMediatR(new[] { Assembly.GetExecutingAssembly(), typeof(CreateProductCommandHandler).Assembly, typeof(NewProductAddedEventHandler).Assembly});
 
             services.AddMvc();
         }
