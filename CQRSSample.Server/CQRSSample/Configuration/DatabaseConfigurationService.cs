@@ -19,7 +19,7 @@ namespace CQRSSample.Api.Config
 
         public async Task CreateDatabaseIfNotExist()
         {
-            await _documentClient.CreateDatabaseIfNotExistsAsync(new Database { Id = _storeDatabaseConfiguration.DatabaseName });
+            await _documentClient.CreateDatabaseIfNotExistsAsync(new Database { Id = _storeDatabaseConfiguration.DatabaseName }).ConfigureAwait(false);
             await _documentClient.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(_storeDatabaseConfiguration.DatabaseName), new DocumentCollection { Id = Domain.Product.Constans.DatabaseConstans.ProductCollection });
         }
     }
