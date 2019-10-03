@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const createProduct = async (product) => {
-    const response = await axios.post("https://", product);
+import * as constants from '../constants/Constants';
+
+export const createProductAsync = async (product) => {
+    const response = await axios.post(constants.baseUrl, product);
     console.log(response);
 };

@@ -1,21 +1,25 @@
-import React, { Component } from 'react';
-import { Input, Icon, Button } from 'antd';
-import TextArea from 'antd/lib/input/TextArea';
+import { withFormik } from 'formik';
+import AddNewProductForm from '../../forms/product/AddNewProductForm';
 
-class AddNewProduct extends Component {
-  render() {
-    return (
-    <div>
-        <div>
-            Fill to add new product
-            <Input prefix={<Icon type="red-envelope" />} size="large" placeholder="Name"/>
-            <TextArea rows={4} placeholder="Description"/>
-            <Button type="primary">Add new product</Button>
-            <Button type="link">Cancel</Button>
-        </div>
-    </div>
-    );
-  }
-}
+const AddNewProduct = withFormik({
+  mapPropsToValues: () => ({ name: '', description: '' }),
+
+  validate: values => {
+    const errors = {};
+
+    if (!values.name) {
+      errors.name = 'Required';
+    }
+
+    if (!values.description) {
+      errors.description = 'Required';
+    }
+    return errors;
+  },
+
+  handleSubmit: (values, { props }) => {
+    props.handleSubmit(values);
+  },
+})(AddNewProductForm);
 
 export default AddNewProduct;
